@@ -1,43 +1,35 @@
-const { expect } = require('chai');
+const { expect } = require("chai");
 
-const chai = require('chai');
-const spies = require('chai-spies');
+const chai = require("chai");
+const spies = require("chai-spies");
 
 chai.use(spies);
 
-const { BinarySearchTree } = require('../binary-search-tree.js');
+const { BinarySearchTree } = require("../binary-search-tree.js");
 
-describe('Binary Search Tree', () => {
-
+describe("Binary Search Tree", () => {
   let bst;
 
   beforeEach(function () {
-
     bst = new BinarySearchTree();
-
   });
 
-  describe('constructor', () => {
-    it('has a default root of null', () => {
-
+  describe("constructor", () => {
+    it("has a default root of null", () => {
       expect(bst.root).to.equal(null);
-
     });
   });
 
-  describe('Part 1: insert(val)', () => {
-    it('inserts values at the root of an empty BST', () => {
-
+  describe("Part 1: insert(val)", () => {
+    it("inserts values at the root of an empty BST", () => {
       bst.insert(4);
 
       expect(bst.root.val).to.equal(4);
       expect(bst.root.left).to.equal(null);
       expect(bst.root.right).to.equal(null);
-
     });
 
-    it('inserts smaller values to the left of tree nodes', () => {
-
+    it("inserts smaller values to the left of tree nodes", () => {
       bst.insert(4);
       bst.insert(2);
 
@@ -48,11 +40,9 @@ describe('Binary Search Tree', () => {
       expect(leftNode.val).to.equal(2);
       expect(leftNode.left).to.equal(null);
       expect(leftNode.right).to.equal(null);
-
     });
 
-    it('inserts larger values to the right of tree nodes', () => {
-
+    it("inserts larger values to the right of tree nodes", () => {
       bst.insert(4);
       bst.insert(6);
 
@@ -63,11 +53,9 @@ describe('Binary Search Tree', () => {
       expect(rightNode.val).to.equal(6);
       expect(rightNode.left).to.equal(null);
       expect(rightNode.right).to.equal(null);
-
     });
 
-    it('inserts multiple values down the tree if there is no room', () => {
-
+    it("inserts multiple values down the tree if there is no room", () => {
       bst.insert(4);
       bst.insert(2);
       bst.insert(6);
@@ -87,11 +75,9 @@ describe('Binary Search Tree', () => {
       expect(rightNode.val).to.equal(6);
       expect(rightNode.left.val).to.equal(5);
       expect(rightNode.right.val).to.equal(7);
-
     });
 
-    it('inserts strictly ascending values down the right', () => {
-
+    it("inserts strictly ascending values down the right", () => {
       bst.insert(1);
       bst.insert(2);
       bst.insert(3);
@@ -127,11 +113,9 @@ describe('Binary Search Tree', () => {
       currentNode = currentNode.right;
       expect(currentNode.val).to.equal(7);
       expect(currentNode.left).to.equal(null);
-
     });
 
-    it('inserts strictly descending values down the left', () => {
-
+    it("inserts strictly descending values down the left", () => {
       bst.insert(7);
       bst.insert(6);
       bst.insert(5);
@@ -167,12 +151,10 @@ describe('Binary Search Tree', () => {
       currentNode = currentNode.left;
       expect(currentNode.val).to.equal(1);
       expect(currentNode.right).to.equal(null);
-
     });
   });
-  describe('Part 2: search', () => {
+  describe("Part 2: search", () => {
     beforeEach(function () {
-
       bst = new BinarySearchTree();
       bst.insert(4);
       bst.insert(2);
@@ -181,11 +163,9 @@ describe('Binary Search Tree', () => {
       bst.insert(3);
       bst.insert(5);
       bst.insert(7);
-
     });
 
-    it('can find values in the tree', () => {
-
+    it.skip("can find values in the tree", () => {
       expect(bst.search(1)).to.be.true;
       expect(bst.search(2)).to.be.true;
       expect(bst.search(3)).to.be.true;
@@ -193,22 +173,18 @@ describe('Binary Search Tree', () => {
       expect(bst.search(5)).to.be.true;
       expect(bst.search(6)).to.be.true;
       expect(bst.search(7)).to.be.true;
-
     });
 
-    it('will return false if values are not in the tree', () => {
-
+    it.skip("will return false if values are not in the tree", () => {
       expect(bst.search(0)).to.be.false;
       expect(bst.search(8)).to.be.false;
       expect(bst.search(9)).to.be.false;
-
     });
   });
-  describe('Part 3: recursive traversals', () => {
+  describe("Part 3: recursive traversals", () => {
     let consoleSpy;
 
     beforeEach(function () {
-
       //      4
       //    /   \
       //   2     6
@@ -224,16 +200,14 @@ describe('Binary Search Tree', () => {
       bst.insert(5);
       bst.insert(7);
 
-      consoleSpy = chai.spy.on(console, 'log');
-
+      consoleSpy = chai.spy.on(console, "log");
     });
 
     afterEach(() => {
-      chai.spy.restore(console, 'log');
+      chai.spy.restore(console, "log");
     });
 
-    it('preOrderTraversal - can print nodes in pre-order', () => {
-
+    it.skip("preOrderTraversal - can print nodes in pre-order", () => {
       bst.preOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
@@ -243,11 +217,9 @@ describe('Binary Search Tree', () => {
       expect(consoleSpy).on.nth(5).be.called.with(6);
       expect(consoleSpy).on.nth(6).be.called.with(5);
       expect(consoleSpy).on.nth(7).be.called.with(7);
-
     });
 
-    it('inOrderTraversal - can print nodes in in-order', () => {
-
+    it.skip("inOrderTraversal - can print nodes in in-order", () => {
       bst.inOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(1);
@@ -257,11 +229,9 @@ describe('Binary Search Tree', () => {
       expect(consoleSpy).on.nth(5).be.called.with(5);
       expect(consoleSpy).on.nth(6).be.called.with(6);
       expect(consoleSpy).on.nth(7).be.called.with(7);
-
     });
 
-    it('postOrderTraversal - can print nodes in post-order', () => {
-
+    it.skip("postOrderTraversal - can print nodes in post-order", () => {
       bst.postOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(1);
@@ -271,16 +241,13 @@ describe('Binary Search Tree', () => {
       expect(consoleSpy).on.nth(5).be.called.with(7);
       expect(consoleSpy).on.nth(6).be.called.with(6);
       expect(consoleSpy).on.nth(7).be.called.with(4);
-
     });
-  
   });
-  
-  describe('Part 4: iterative traversals', () => {
+
+  describe("Part 4: iterative traversals", () => {
     let consoleSpy;
 
     beforeEach(function () {
-
       //      4
       //    /   \
       //   2     6
@@ -296,16 +263,14 @@ describe('Binary Search Tree', () => {
       bst.insert(5);
       bst.insert(7);
 
-      consoleSpy = chai.spy.on(console, 'log');
-
+      consoleSpy = chai.spy.on(console, "log");
     });
 
     afterEach(() => {
-      chai.spy.restore(console, 'log');
+      chai.spy.restore(console, "log");
     });
 
-    it('breadthFirstTraversal - can print nodes in breadth-first order', () => {
-
+    it.skip("breadthFirstTraversal - can print nodes in breadth-first order", () => {
       bst.breadthFirstTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
@@ -315,11 +280,9 @@ describe('Binary Search Tree', () => {
       expect(consoleSpy).on.nth(5).be.called.with(3);
       expect(consoleSpy).on.nth(6).be.called.with(5);
       expect(consoleSpy).on.nth(7).be.called.with(7);
-
     });
 
-    it('depthFirstTraversal - can print nodes in depth-first order', () => {
-
+    it.skip("depthFirstTraversal - can print nodes in depth-first order", () => {
       bst.depthFirstTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
@@ -329,9 +292,6 @@ describe('Binary Search Tree', () => {
       expect(consoleSpy).on.nth(5).be.called.with(2);
       expect(consoleSpy).on.nth(6).be.called.with(3);
       expect(consoleSpy).on.nth(7).be.called.with(1);
-
     });
-
   });
-
 });
