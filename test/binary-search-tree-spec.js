@@ -165,7 +165,7 @@ describe("Binary Search Tree", () => {
       bst.insert(7);
     });
 
-    it.skip("can find values in the tree", () => {
+    it("can find values in the tree", () => {
       expect(bst.search(1)).to.be.true;
       expect(bst.search(2)).to.be.true;
       expect(bst.search(3)).to.be.true;
@@ -175,7 +175,7 @@ describe("Binary Search Tree", () => {
       expect(bst.search(7)).to.be.true;
     });
 
-    it.skip("will return false if values are not in the tree", () => {
+    it("will return false if values are not in the tree", () => {
       expect(bst.search(0)).to.be.false;
       expect(bst.search(8)).to.be.false;
       expect(bst.search(9)).to.be.false;
@@ -207,7 +207,7 @@ describe("Binary Search Tree", () => {
       chai.spy.restore(console, "log");
     });
 
-    it.skip("preOrderTraversal - can print nodes in pre-order", () => {
+    it("preOrderTraversal - can print nodes in pre-order", () => {
       bst.preOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
@@ -219,7 +219,7 @@ describe("Binary Search Tree", () => {
       expect(consoleSpy).on.nth(7).be.called.with(7);
     });
 
-    it.skip("inOrderTraversal - can print nodes in in-order", () => {
+    it("inOrderTraversal - can print nodes in in-order", () => {
       bst.inOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(1);
@@ -231,7 +231,7 @@ describe("Binary Search Tree", () => {
       expect(consoleSpy).on.nth(7).be.called.with(7);
     });
 
-    it.skip("postOrderTraversal - can print nodes in post-order", () => {
+    it("postOrderTraversal - can print nodes in post-order", () => {
       bst.postOrderTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(1);
@@ -270,7 +270,7 @@ describe("Binary Search Tree", () => {
       chai.spy.restore(console, "log");
     });
 
-    it.skip("breadthFirstTraversal - can print nodes in breadth-first order", () => {
+    it("breadthFirstTraversal - can print nodes in breadth-first order", () => {
       bst.breadthFirstTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
@@ -282,7 +282,7 @@ describe("Binary Search Tree", () => {
       expect(consoleSpy).on.nth(7).be.called.with(7);
     });
 
-    it.skip("depthFirstTraversal - can print nodes in depth-first order", () => {
+    it("depthFirstTraversal - can print nodes in depth-first order", () => {
       bst.depthFirstTraversal();
 
       expect(consoleSpy).on.nth(1).be.called.with(4);
